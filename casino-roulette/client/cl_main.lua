@@ -814,13 +814,12 @@ CreateThread(function()
                                 break
                             end
                             if IsControlJustPressed(0, 38) then
-                                QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
-                                    if HasItem then
-                                        TriggerServerEvent('server_remote:rulett:taskSitDown', k, closestChairData)
-                                	else
-							            QBCore.Functions.Notify('You are not a member of the casino', 'error', 3500)
-						            end
-					            end, 'casino_member')
+                                local HasItem = QBCore.Functions.HasItem('casino_member')
+                                if HasItem then
+                                    TriggerServerEvent('server_remote:rulett:taskSitDown', k, closestChairData)
+                                else
+                                    QBCore.Functions.Notify('You are not a member of the casino', 'error', 3500)
+                                end
                             end
                             break
                         end
